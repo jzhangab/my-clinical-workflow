@@ -1102,19 +1102,43 @@ function ClinicalWorkflow() {
                         }}>
                           <span style={{ color: style.border, marginRight: 6 }}>▸</span>
                           {item.file ? (
-                            <a
-                              href={item.file}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{
-                                color: style.text,
-                                textDecoration: "underline",
-                                textDecorationStyle: "dotted",
-                                textUnderlineOffset: "3px",
-                              }}
-                            >
-                              {item.label}
-                            </a>
+                            <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                              <a
+                                href={item.file}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                  color: style.text,
+                                  textDecoration: "underline",
+                                  textDecorationStyle: "dotted",
+                                  textUnderlineOffset: "3px",
+                                }}
+                              >
+                                {item.label}
+                              </a>
+                              <a
+                                href={item.file.replace(/\.md$/, ".docx")}
+                                download
+                                title="Download Word document"
+                                style={{
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  background: "#2B579A",
+                                  color: "#fff",
+                                  fontSize: 9,
+                                  fontWeight: 700,
+                                  letterSpacing: "0.04em",
+                                  padding: "2px 5px",
+                                  borderRadius: 3,
+                                  textDecoration: "none",
+                                  flexShrink: 0,
+                                  lineHeight: 1.4,
+                                }}
+                              >
+                                W↓
+                              </a>
+                            </span>
                           ) : item.label}
                         </div>
                       ))}
