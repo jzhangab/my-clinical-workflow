@@ -863,6 +863,13 @@ function ClinicalWorkflow() {
         </div>
       </div>
 
+      <WorkflowGraph
+        onNavigate={(phaseId, nodeId) => {
+          setActivePhase(phaseId);
+          setActiveNode(nodeId || null);
+        }}
+      />
+
       <div style={{ padding: "32px 40px", maxWidth: 1600, margin: "0 auto" }}>
 
         {/* Overview pipeline — always visible */}
@@ -1150,6 +1157,165 @@ function ClinicalWorkflow() {
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+function WorkflowGraph({ onNavigate }) {
+  const [open, setOpen] = useState(false);
+
+  // Layout constants
+  const PAD = 20, LW = 200, LG = 48, PHH = 40, SNH = 26, SNG = 5, TX = 8;
+  const P2P = 16, P2S = 30;
+  const lx = (i) => PAD + i * (LW + LG);
+  const trunc = (s, n = 22) => s.length > n ? s.slice(0, n) + "…" : s;
+
+  const layouts = PHASES.map((phase, i) => {
+    const x = lx(i);
+    const phY = PAD;
+    const trunkX = x + TX;
+    const parY = phY + PHH + P2P;
+
+    const pNodes = phase.parallel.map((n, j) => ({
+      id: n.id, label: n.label,
+      ry: parY + j * (SNH + SNG),
+    }));
+
+    const parEndY = parY + (phase.parallel.length - 1) * (SNH + SNG) + SNH;
+    const seqY = parEndY + P2S;
+
+    const sNodes = phase.sequential.map((n, j) => ({
+      id: n.id, label: n.label,
+      ry: seqY + j * (SNH + SNG),
+    }));
+
+    const endY = sNodes.length > 0
+      ? sNodes[sNodes.length - 1].ry + SNH
+      : parEndY;
+
+    return { phase, x, phY, trunkX, parY, pNodes, parEndY, seqY, sNodes, endY };
+  });
+
+  const svgH = Math.max(...layouts.map(l => l.endY)) + PAD;
+  const svgW = lx(PHASES.length) - LG + PAD;
+
+  return (
+    <div style={{ borderBottom: "1px solid #1e293b" }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: "100%", background: "transparent", border: "none",
+          color: open ? "#94a3b8" : "#475569",
+          fontFamily: "'IBM Plex Mono', monospace",
+          fontSize: 11, fontWeight: 600, letterSpacing: "0.12em",
+          padding: "12px 40px", cursor: "pointer",
+          textAlign: "left", display: "flex", alignItems: "center", gap: 10,
+          transition: "color 0.15s",
+        }}
+      >
+        <span style={{ fontSize: 10 }}>{open ? "▼" : "▶"}</span>
+        WORKFLOW GRAPH — ALL PHASES & NODES
+        <span style={{ marginLeft: "auto", fontSize: 10, color: "#334155" }}>
+          {open ? "COLLAPSE" : "EXPAND"} · CLICK ANY NODE TO NAVIGATE
+        </span>
+      </button>
+
+      {open && (
+        <div style={{
+          overflowX: "auto", background: "#080C14",
+          padding: "16px 0 24px", borderTop: "1px solid #1e293b",
+        }}>
+          <svg width={svgW} height={svgH} style={{ display: "block", overflow: "visible" }}>
+            <defs>
+              {PHASES.map(ph => (
+                <marker key={ph.id} id={`arh-${ph.id}`}
+                  markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L6,3 z" fill={ph.accent} />
+                </marker>
+              ))}
+            </defs>
+
+            {layouts.map((L, i) => {
+              const { phase, x, phY, trunkX, parY, pNodes, parEndY, seqY, sNodes, endY } = L;
+              const nRX = x + TX + 10;
+              const nRW = LW - TX - 10;
+
+              return (
+                <g key={phase.id}>
+                  {/* Trunk: header → last parallel */}
+                  <line x1={trunkX} y1={phY + PHH} x2={trunkX} y2={parEndY}
+                    stroke={phase.color + "55"} strokeWidth={1.5} />
+
+                  {/* Convergence dots & trunk to sequential */}
+                  {sNodes.length > 0 && (
+                    <>
+                      <circle cx={trunkX} cy={parEndY + P2S * 0.25} r={2} fill={phase.color + "99"} />
+                      <circle cx={trunkX} cy={parEndY + P2S * 0.5}  r={2} fill={phase.color + "66"} />
+                      <circle cx={trunkX} cy={parEndY + P2S * 0.75} r={2} fill={phase.accent + "88"} />
+                      <line x1={trunkX} y1={parEndY + P2S * 0.9} x2={trunkX} y2={endY}
+                        stroke={phase.accent + "55"} strokeWidth={1.5} />
+                    </>
+                  )}
+
+                  {/* Phase header */}
+                  <rect rx={6} x={x} y={phY} width={LW} height={PHH}
+                    fill={phase.color} style={{ cursor: "pointer" }}
+                    onClick={() => onNavigate(phase.id, null)} />
+                  <text x={x + LW / 2} y={phY + PHH / 2}
+                    textAnchor="middle" dominantBaseline="middle"
+                    fill="white" fontSize={11} fontWeight={700}
+                    fontFamily="'IBM Plex Mono', monospace"
+                    style={{ pointerEvents: "none", userSelect: "none" }}>
+                    {phase.icon}  {phase.label.toUpperCase()}
+                  </text>
+
+                  {/* Parallel nodes */}
+                  {pNodes.map(n => (
+                    <g key={n.id} onClick={() => onNavigate(phase.id, n.id)} style={{ cursor: "pointer" }}>
+                      <line x1={trunkX} y1={n.ry + SNH / 2} x2={nRX} y2={n.ry + SNH / 2}
+                        stroke={phase.color + "55"} strokeWidth={1} />
+                      <rect rx={3} x={nRX} y={n.ry} width={nRW} height={SNH}
+                        fill={phase.bg} stroke={phase.color + "66"} strokeWidth={1} />
+                      <text x={nRX + 6} y={n.ry + SNH / 2}
+                        dominantBaseline="middle" fill={phase.accent}
+                        fontSize={8.5} fontFamily="'IBM Plex Mono', monospace"
+                        style={{ pointerEvents: "none", userSelect: "none" }}>
+                        ⟣ {trunc(n.label)}
+                      </text>
+                    </g>
+                  ))}
+
+                  {/* Sequential nodes */}
+                  {sNodes.map(n => (
+                    <g key={n.id} onClick={() => onNavigate(phase.id, n.id)} style={{ cursor: "pointer" }}>
+                      <line x1={trunkX} y1={n.ry + SNH / 2} x2={nRX} y2={n.ry + SNH / 2}
+                        stroke={phase.accent + "77"} strokeWidth={1} />
+                      <rect rx={3} x={nRX} y={n.ry} width={nRW} height={SNH}
+                        fill={phase.bg} stroke={phase.accent + "88"} strokeWidth={1.5} />
+                      <text x={nRX + 6} y={n.ry + SNH / 2}
+                        dominantBaseline="middle" fill={phase.accent}
+                        fontSize={8.5} fontFamily="'IBM Plex Mono', monospace"
+                        style={{ pointerEvents: "none", userSelect: "none" }}>
+                        → {trunc(n.label)}
+                      </text>
+                    </g>
+                  ))}
+
+                  {/* Inter-phase arrow */}
+                  {i < PHASES.length - 1 && (
+                    <line
+                      x1={x + LW} y1={phY + PHH / 2}
+                      x2={lx(i + 1) - 2} y2={phY + PHH / 2}
+                      stroke={PHASES[i + 1].color + "cc"} strokeWidth={2}
+                      markerEnd={`url(#arh-${PHASES[i + 1].id})`}
+                    />
+                  )}
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+      )}
     </div>
   );
 }
