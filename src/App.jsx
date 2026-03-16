@@ -120,8 +120,10 @@ function LoginPage({ onSuccess }) {
 }
 
 // Helper to build a public/data file URL
-const f = (folder, filename) =>
-  `/data/${folder.replace(/ /g, "%20").replace(/&/g, "%26").replace(/:/g, "%3A")}/${filename}`;
+const enc = (s) => s
+  .replace(/ /g, "%20").replace(/&/g, "%26").replace(/:/g, "%3A")
+  .replace(/>/g, "%3E").replace(/\(/g, "%28").replace(/\)/g, "%29");
+const f = (folder, filename) => `/data/${enc(folder)}/${enc(filename)}`;
 
 const PC_DISC  = "PRECLINICAL/Discovery & Target ID";
 const PC_TOX   = "PRECLINICAL/In Vitro & Toxicology";
@@ -135,6 +137,22 @@ const P1_BIOA  = "PHASE 1/Bioanalytical Methods";
 const P1_CMC   = "PHASE 1/CMC Development";
 const P1_IMP   = "PHASE 1/IMP & IMPD Preparation";
 const P1_EOP1  = "PHASE 1/End-of-Phase 1 Meeting";
+
+const P2A      = "PHASE 2/Phase 2a - Proof of Concept";
+const P2B      = "PHASE 2/Phase 2b - Dose Ranging";
+const P2_POP   = "PHASE 2/Population PK:PD Modeling";
+const P2_RMP   = "PHASE 2/Risk Management & Regulatory";
+const P2_EOP2  = "PHASE 2/End-of-Phase 2 Meeting";
+
+const P3_PIV   = "PHASE 3/Pivotal Trials (>2)";
+const P3_SUB   = "PHASE 3/Supportive & Subgroup Studies";
+const P3_CMC   = "PHASE 3/Commercial CMC Package";
+const P3_REG   = "PHASE 3/Regulatory Submissions";
+const P3_APP   = "PHASE 3/Approval & Launch Readiness";
+
+const PL_RWE   = "POST-LAUNCH/Real World Evidence (RWE)";
+const PL_PMS   = "POST-LAUNCH/Post-Marketing Safety (PMS)";
+const PL_HEOR  = "POST-LAUNCH/HEOR & Market Access";
 
 const PHASES = [
   {
@@ -380,11 +398,11 @@ const PHASES = [
         label: "Phase 2a – Proof of Concept",
         type: "parallel",
         docs: [
-          { label: "Phase 2a protocol",   file: null },
-          { label: "ICF",                 file: null },
-          { label: "eCRF design",         file: null },
-          { label: "SAP v1",              file: null },
-          { label: "CSR (Phase 2a)",      file: null },
+          { label: "Phase 2a protocol",   file: f(P2A, "01_CVB-CRC-201_Protocol_v1.0.docx") },
+          { label: "ICF",                 file: f(P2A, "02_CVB-CRC-201_ICF_v1.0.docx") },
+          { label: "eCRF design",         file: f(P2A, "03_CVB-CRC-201_eCRF_Design_v1.0.docx") },
+          { label: "SAP v1",              file: f(P2A, "04_CVB-CRC-201_SAP_v1.0.docx") },
+          { label: "CSR (Phase 2a)",      file: f(P2A, "05_CVB-CRC-201_CSR_v1.0.docx") },
         ],
         artifacts: [
           { label: "PoC decision package",       file: null },
@@ -401,7 +419,7 @@ const PHASES = [
         label: "Phase 2b – Dose Ranging",
         type: "parallel",
         docs: [
-          { label: "Phase 2b protocol",   file: null },
+          { label: "Phase 2b protocol",   file: f(P2B, "AXB-CRC-201_Cervimab_Phase2b_Protocol_v1.0.docx") },
           { label: "ICF",                 file: null },
           { label: "eCRF",                file: null },
           { label: "SAP v2",              file: null },
@@ -423,9 +441,9 @@ const PHASES = [
         label: "Population PK/PD Modeling",
         type: "parallel",
         docs: [
-          { label: "PopPK analysis plan",                  file: null },
-          { label: "PopPK report",                         file: null },
-          { label: "Exposure-response analysis report",    file: null },
+          { label: "PopPK analysis plan",                  file: f(P2_POP, "cervimab_poppk_plan.docx") },
+          { label: "PopPK report",                         file: f(P2_POP, "cervimab_poppk_report.docx") },
+          { label: "Exposure-response analysis report",    file: f(P2_POP, "cervimab_er_report.docx") },
         ],
         artifacts: [
           { label: "PopPK model (NONMEM/Monolix)", file: null },
@@ -442,10 +460,10 @@ const PHASES = [
         label: "Risk Management & Regulatory",
         type: "parallel",
         docs: [
-          { label: "IND annual report",                    file: null },
-          { label: "Safety update reports",                file: null },
-          { label: "Risk Management Plan (RMP) draft",     file: null },
-          { label: "Pediatric investigation plan (PIP)",   file: null },
+          { label: "IND annual report",                    file: f(P2_RMP, "CERVI-IND-Annual-Report-v1.0.docx") },
+          { label: "Safety update reports",                file: f(P2_RMP, "CERVI-Safety-Update-Report-v1.0.docx") },
+          { label: "Risk Management Plan (RMP) draft",     file: f(P2_RMP, "CERVI-Risk-Management-Plan-v2.0.docx") },
+          { label: "Pediatric investigation plan (PIP)",   file: f(P2_RMP, "CERVI-Pediatric-Investigation-Plan-v1.0.docx") },
         ],
         artifacts: [
           { label: "DSMB/DMC charters",      file: null },
@@ -463,10 +481,10 @@ const PHASES = [
         label: "End-of-Phase 2 Meeting",
         type: "sequential",
         docs: [
-          { label: "Type B EOP2 meeting package",      file: null },
-          { label: "Phase 3 protocol synopsis",        file: null },
-          { label: "Agreed endpoints/estimands",       file: null },
-          { label: "SPA request",                      file: null },
+          { label: "Type B EOP2 meeting package",      file: f(P2_EOP2, "CERVIMAB_EOP2_Meeting_Request.docx") },
+          { label: "Phase 3 protocol synopsis",        file: f(P2_EOP2, "CERVIMAB_Phase3_Protocol_Synopsis.docx") },
+          { label: "Agreed endpoints/estimands",       file: f(P2_EOP2, "CERVIMAB_Endpoints_Estimands.docx") },
+          { label: "SPA request",                      file: f(P2_EOP2, "CERVIMAB_SPA_Request.docx") },
         ],
         artifacts: [
           { label: "SPA agreement letter",     file: null },
@@ -493,11 +511,11 @@ const PHASES = [
         label: "Pivotal Trials (≥2)",
         type: "parallel",
         docs: [
-          { label: "Phase 3 protocol (ICH E6 GCP)", file: null },
-          { label: "Master ICF",                    file: null },
-          { label: "eCRF",                          file: null },
-          { label: "SAP (final)",                   file: null },
-          { label: "CSR per trial",                 file: null },
+          { label: "Phase 3 protocol (ICH E6 GCP)", file: f(P3_PIV, "CERVIMAB301_Protocol_v1.0.docx") },
+          { label: "Master ICF",                    file: f(P3_PIV, "CERVIMAB301_MasterICF_v1.0.docx") },
+          { label: "eCRF",                          file: f(P3_PIV, "CERVIMAB301_eCRF_v1.0.docx") },
+          { label: "SAP (final)",                   file: f(P3_PIV, "CERV301_SAP_v2.0.docx") },
+          { label: "CSR per trial",                 file: f(P3_PIV, "CERV301_CSR_Final.docx") },
         ],
         artifacts: [
           { label: "Primary/secondary endpoint tables", file: null },
@@ -517,9 +535,9 @@ const PHASES = [
         label: "Supportive & Subgroup Studies",
         type: "parallel",
         docs: [
-          { label: "Long-term safety protocol",                    file: null },
-          { label: "Special population protocols (renal/hepatic)", file: null },
-          { label: "QTc study",                                    file: null },
+          { label: "Long-term safety protocol",                    file: f(P3_SUB, "CER-LTS-001_LongTerm_Safety_Protocol.docx") },
+          { label: "Special population protocols (renal/hepatic)", file: f(P3_SUB, "CER-SP-002_Special_Population_Renal_Hepatic_Protocol.docx") },
+          { label: "QTc study",                                    file: f(P3_SUB, "CER-QT-003_TQT_QTc_Study_Protocol.docx") },
         ],
         artifacts: [
           { label: "Integrated safety summary (ISS)",   file: null },
@@ -535,10 +553,10 @@ const PHASES = [
         label: "Commercial CMC Package",
         type: "parallel",
         docs: [
-          { label: "Drug substance/product CTD sections (P+S)", file: null },
-          { label: "Process validation reports",                file: null },
-          { label: "Comparability protocols",                   file: null },
-          { label: "Shelf life determination",                  file: null },
+          { label: "Drug substance/product CTD sections (P+S)", file: f(P3_CMC, "CTD_Module3_Cervimab.docx") },
+          { label: "Process validation reports",                file: f(P3_CMC, "ProcessValidationReport_PVR001_Cervimab.docx") },
+          { label: "Comparability protocols",                   file: f(P3_CMC, "ComparabilityProtocol_CMP001_Cervimab.docx") },
+          { label: "Shelf life determination",                  file: f(P3_CMC, "ShelfLifeDetermination_SLD001_Cervimab.docx") },
         ],
         artifacts: [
           { label: "Commercial specifications",      file: null },
@@ -554,10 +572,10 @@ const PHASES = [
         label: "Regulatory Submissions",
         type: "parallel",
         docs: [
-          { label: "NDA/BLA (eCTD format)",       file: null },
-          { label: "MAA (EMA)",                   file: null },
-          { label: "PMDA submission (Japan)",     file: null },
-          { label: "Health Canada filing",        file: null },
+          { label: "NDA/BLA (eCTD format)",       file: f(P3_REG, "CERVIMAB_BLA_761XXX_FDA_eCTD.docx") },
+          { label: "MAA (EMA)",                   file: f(P3_REG, "CERVIMAB_MAA_EMA.docx") },
+          { label: "PMDA submission (Japan)",     file: f(P3_REG, "CERVIMAB_JNDA_PMDA.docx") },
+          { label: "Health Canada filing",        file: f(P3_REG, "CERVIMAB_NDS_HealthCanada.docx") },
         ],
         artifacts: [
           { label: "eCTD spine",                          file: null },
@@ -577,10 +595,10 @@ const PHASES = [
         label: "Regulatory Review & Advisory",
         type: "sequential",
         docs: [
-          { label: "Complete Response to information requests",    file: null },
-          { label: "Advisory Committee briefing document",         file: null },
-          { label: "Labeling negotiations (PI/SmPC)",              file: null },
-          { label: "REMS proposal",                               file: null },
+          { label: "Complete Response to information requests",    file: f(P3_REG, "CERVIMAB_Doc1_Complete_Response_to_CRL.docx") },
+          { label: "Advisory Committee briefing document",         file: f(P3_REG, "CERVIMAB_Doc2_ODAC_Briefing_Document.docx") },
+          { label: "Labeling negotiations (PI/SmPC)",              file: f(P3_REG, "CERVIMAB_Doc3_Labeling_Negotiations_PI_SmPC.docx") },
+          { label: "REMS proposal",                               file: f(P3_REG, "CERVIMAB_Doc4_REMS_Proposal.docx") },
         ],
         artifacts: [
           { label: "Final product label (draft)",     file: null },
@@ -597,7 +615,7 @@ const PHASES = [
         label: "Approval & Launch Readiness",
         type: "sequential",
         docs: [
-          { label: "Approval letter",                                   file: null },
+          { label: "Approval letter",                                   file: f(P3_APP, "Approval Letter.docx") },
           { label: "Final USPI/SmPC",                                   file: null },
           { label: "Post-marketing commitment schedule",                file: null },
           { label: "Risk Evaluation and Mitigation Strategy (REMS)",   file: null },
@@ -627,7 +645,7 @@ const PHASES = [
         label: "Real World Evidence (RWE)",
         type: "parallel",
         docs: [
-          { label: "RWE study protocol",    file: null },
+          { label: "RWE study protocol",    file: f(PL_RWE, "CERVIMAB_PostLaunch_RWD_RWE_Package.docx") },
           { label: "Data use agreement",    file: null },
           { label: "IRB/ethics approval",   file: null },
           { label: "RWD analysis plan",     file: null },
@@ -650,7 +668,7 @@ const PHASES = [
         label: "Post-Marketing Safety (PMS)",
         type: "parallel",
         docs: [
-          { label: "PSUR/PBRER",                          file: null },
+          { label: "PSUR/PBRER",                          file: f(PL_PMS, "PSURPBRER package.docx") },
           { label: "PADER",                               file: null },
           { label: "ICSRs (MedWatch/EudraVigilance)",     file: null },
           { label: "Risk management plan updates",        file: null },
@@ -690,10 +708,10 @@ const PHASES = [
         label: "HEOR & Market Access",
         type: "parallel",
         docs: [
-          { label: "HTA dossier (NICE, HAS, G-BA)",   file: null },
-          { label: "Cost-effectiveness models",        file: null },
-          { label: "Budget impact analysis",           file: null },
-          { label: "Value dossier",                    file: null },
+          { label: "HTA dossier (NICE, HAS, G-BA)",   file: f(PL_HEOR, "cervimab_hta_dossier.docx") },
+          { label: "Cost-effectiveness models",        file: f(PL_HEOR, "cervimab_cost_effectiveness.docx") },
+          { label: "Budget impact analysis",           file: f(PL_HEOR, "cervimab_budget_impact.docx") },
+          { label: "Value dossier",                    file: f(PL_HEOR, "cervimab_value_dossier.docx") },
         ],
         artifacts: [
           { label: "Payer evidence packages",          file: null },
