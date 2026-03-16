@@ -517,6 +517,7 @@ const PHASES = [
           { label: "eCRF",                          file: f(P3_PIV, "CERVIMAB301_eCRF_v1.0.md") },
           { label: "SAP (final)",                   file: f(P3_PIV, "CERV301_SAP_v2.0.md") },
           { label: "CSR per trial",                 file: f(P3_PIV, "CERV301_CSR_Final.md") },
+          { label: "Clinical Operations Strategy",  file: f(P3_PIV, "CERVIMAB301_ClinicalOperationsPlan_v1.0.md") },
         ],
         artifacts: [
           { label: "Primary/secondary endpoint tables", file: null },
