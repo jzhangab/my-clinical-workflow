@@ -1,5 +1,15 @@
 import { useState } from "react";
 
+// Helper to build a public/data file URL
+const f = (folder, filename) =>
+  `/data/${folder.replace(/ /g, "%20").replace(/&/g, "%26").replace(/:/g, "%3A")}/${filename}`;
+
+const PC_DISC = "PRECLINICAL/Discovery & Target ID";
+const PC_TOX  = "PRECLINICAL/In Vitro & Toxicology";
+const PC_PHARM = "PRECLINICAL/Pharmacology & PK:PD";
+const PC_CHEM  = "PRECLINICAL/Analytical Chemistry & Formulation";
+const PC_IND   = "PRECLINICAL/IND-Enabling Package";
+
 const PHASES = [
   {
     id: "preclinical",
@@ -14,33 +24,75 @@ const PHASES = [
         id: "pc-disc",
         label: "Discovery & Target ID",
         type: "parallel",
-        docs: ["Target validation report", "HTS screening data", "Lead compound library"],
-        artifacts: ["Compound activity data", "Structure-activity relationship (SAR) models"],
-        data: ["Genomic/proteomic datasets", "In vitro assay results"],
+        docs: [
+          { label: "Target validation report",    file: f(PC_DISC, "01_Target_Validation_Report_Cervimab.docx") },
+          { label: "HTS screening data",           file: f(PC_DISC, "02_HTS_Screening_Data_Cervimab.docx") },
+          { label: "Lead compound library",        file: f(PC_DISC, "03_Lead_Compound_Library_Cervimab.docx") },
+        ],
+        artifacts: [
+          { label: "Compound activity data",                      file: f(PC_DISC, "04_Compound_Activity_Data_Cervimab.docx") },
+          { label: "Structure-activity relationship (SAR) models", file: f(PC_DISC, "05_SAR_Model_Report_Cervimab.docx") },
+        ],
+        data: [
+          { label: "Genomic/proteomic datasets", file: f(PC_DISC, "06_Genomic_Proteomic_Dataset_Cervimab.docx") },
+          { label: "In vitro assay results",      file: f(PC_DISC, "07_In_Vitro_Assay_Results_Cervimab.docx") },
+        ],
       },
       {
         id: "pc-tox",
         label: "In Vitro & In Vivo Toxicology",
         type: "parallel",
-        docs: ["GLP toxicology study reports", "NOAEL/LOAEL determinations", "Genotox battery results"],
-        artifacts: ["Tox summary tables", "Dose-response curves"],
-        data: ["ADME data", "Metabolite profiling", "Protein binding data"],
+        docs: [
+          { label: "GLP toxicology study reports (single-dose)",  file: f(PC_TOX, "08_GLP_SingleDose_Tox_Cervimab.docx") },
+          { label: "GLP toxicology study reports (repeat-dose)",  file: f(PC_TOX, "09_GLP_RepeatDose_13wk_Tox_Cervimab.docx") },
+          { label: "NOAEL/LOAEL determinations",                  file: f(PC_TOX, "10_NOAEL_LOAEL_Determination_Cervimab.docx") },
+          { label: "Genotox battery results",                     file: f(PC_TOX, "11_Genotoxicity_Battery_Results_Cervimab.docx") },
+        ],
+        artifacts: [
+          { label: "Tox summary tables",   file: f(PC_TOX, "12_Tox_Summary_Tables_Cervimab.docx") },
+          { label: "Dose-response curves", file: f(PC_TOX, "13_Dose_Response_Curves_Cervimab.docx") },
+        ],
+        data: [
+          { label: "ADME data",            file: f(PC_TOX, "14_ADME_Data_Cervimab.docx") },
+          { label: "Metabolite profiling", file: f(PC_TOX, "15_Metabolite_Profiling_ProteinBinding_Cervimab.docx") },
+          { label: "Protein binding data", file: f(PC_TOX, "15_Metabolite_Profiling_ProteinBinding_Cervimab.docx") },
+        ],
       },
       {
         id: "pc-pharm",
         label: "Pharmacology & PK/PD",
         type: "parallel",
-        docs: ["Pharmacology study reports", "PK/PD models", "Bioavailability summaries"],
-        artifacts: ["PK parameter tables", "PD biomarker data"],
-        data: ["Plasma concentration-time data", "Receptor occupancy data"],
+        docs: [
+          { label: "Pharmacology study reports", file: f(PC_PHARM, "16_Primary_Pharmacology_Study_Cervimab.docx") },
+          { label: "PK/PD models",               file: f(PC_PHARM, "17_PKPD_Model_Report_Cervimab.docx") },
+          { label: "Bioavailability summaries",  file: f(PC_PHARM, "18_Bioavailability_Summary_Cervimab.docx") },
+        ],
+        artifacts: [
+          { label: "PK parameter tables", file: f(PC_PHARM, "19_PK_Parameter_Tables_Cervimab.docx") },
+          { label: "PD biomarker data",   file: f(PC_PHARM, "20_Biomarker_Data_Cervimab.docx") },
+        ],
+        data: [
+          { label: "Plasma concentration-time data", file: f(PC_PHARM, "21_Plasma_Concentration_Time_Data_Cervimab.docx") },
+          { label: "Receptor occupancy data",        file: f(PC_PHARM, "22_Receptor_Occupancy_Data_Cervimab.docx") },
+        ],
       },
       {
         id: "pc-chem",
         label: "Analytical Chemistry & Formulation",
         type: "parallel",
-        docs: ["Drug substance characterization", "Formulation development reports", "Stability studies"],
-        artifacts: ["Analytical methods", "Reference standards"],
-        data: ["Purity/impurity profiles", "Stability data packages"],
+        docs: [
+          { label: "Drug substance characterization",   file: f(PC_CHEM, "cervimab_DS_characterization_3.2.S.3.docx") },
+          { label: "Formulation development reports",   file: f(PC_CHEM, "cervimab_formulation_development_3.2.P.2.docx") },
+          { label: "Stability studies",                 file: f(PC_CHEM, "cervimab_stability_studies_3.2.S.7_P.8.docx") },
+        ],
+        artifacts: [
+          { label: "Analytical methods",  file: null },
+          { label: "Reference standards", file: null },
+        ],
+        data: [
+          { label: "Purity/impurity profiles",   file: null },
+          { label: "Stability data packages",    file: null },
+        ],
       },
     ],
     sequential: [
@@ -48,9 +100,21 @@ const PHASES = [
         id: "pc-ind",
         label: "IND-Enabling Package",
         type: "sequential",
-        docs: ["IND Application (21 CFR 312)", "Investigator's Brochure (IB) v1", "CMC section", "Pharmacology/Tox section", "Clinical protocol synopsis"],
-        artifacts: ["Integrated summary of safety (ISS) preclinical", "FDA pre-IND meeting minutes"],
-        data: ["Consolidated nonclinical dataset", "Starting dose calculations"],
+        docs: [
+          { label: "IND Application (21 CFR 312)",        file: f(PC_IND, "CERVIMAB_IND_Package.docx") },
+          { label: "Investigator's Brochure (IB) v1",     file: null },
+          { label: "CMC section",                         file: null },
+          { label: "Pharmacology/Tox section",            file: null },
+          { label: "Clinical protocol synopsis",          file: null },
+        ],
+        artifacts: [
+          { label: "Integrated summary of safety (ISS) preclinical", file: null },
+          { label: "FDA pre-IND meeting minutes",                     file: null },
+        ],
+        data: [
+          { label: "Consolidated nonclinical dataset", file: null },
+          { label: "Starting dose calculations",       file: null },
+        ],
       },
     ],
   },
@@ -67,33 +131,75 @@ const PHASES = [
         id: "p1-sad",
         label: "SAD/MAD Studies",
         type: "parallel",
-        docs: ["SAD/MAD protocol", "Dose escalation plan", "Safety monitoring committee charter"],
-        artifacts: ["Dose-exposure-response tables", "PK parameter summaries", "Safety listings"],
-        data: ["PK plasma samples", "Safety labs", "ECG data", "Biomarker specimens"],
+        docs: [
+          { label: "SAD/MAD protocol",                       file: null },
+          { label: "Dose escalation plan",                   file: null },
+          { label: "Safety monitoring committee charter",    file: null },
+        ],
+        artifacts: [
+          { label: "Dose-exposure-response tables", file: null },
+          { label: "PK parameter summaries",        file: null },
+          { label: "Safety listings",               file: null },
+        ],
+        data: [
+          { label: "PK plasma samples",    file: null },
+          { label: "Safety labs",          file: null },
+          { label: "ECG data",             file: null },
+          { label: "Biomarker specimens",  file: null },
+        ],
       },
       {
         id: "p1-food",
         label: "Food Effect / DDI Studies",
         type: "parallel",
-        docs: ["Food effect protocol", "DDI study protocol", "CYP inhibition/induction report"],
-        artifacts: ["Bioequivalence summaries", "DDI risk assessment"],
-        data: ["Fed/fasted PK profiles", "CYP probe substrate data"],
+        docs: [
+          { label: "Food effect protocol",              file: null },
+          { label: "DDI study protocol",                file: null },
+          { label: "CYP inhibition/induction report",  file: null },
+        ],
+        artifacts: [
+          { label: "Bioequivalence summaries", file: null },
+          { label: "DDI risk assessment",      file: null },
+        ],
+        data: [
+          { label: "Fed/fasted PK profiles",      file: null },
+          { label: "CYP probe substrate data",    file: null },
+        ],
       },
       {
         id: "p1-bioa",
         label: "Bioanalytical Methods",
         type: "parallel",
-        docs: ["Bioanalytical method validation report (BMV)", "Incurred sample reanalysis (ISR) report"],
-        artifacts: ["Validated assay SOPs", "Reference standard COAs"],
-        data: ["Calibration curve data", "QC sample data"],
+        docs: [
+          { label: "Bioanalytical method validation report (BMV)", file: null },
+          { label: "Incurred sample reanalysis (ISR) report",      file: null },
+        ],
+        artifacts: [
+          { label: "Validated assay SOPs",    file: null },
+          { label: "Reference standard COAs", file: null },
+        ],
+        data: [
+          { label: "Calibration curve data", file: null },
+          { label: "QC sample data",         file: null },
+        ],
       },
       {
         id: "p1-cmc",
         label: "CMC Development",
         type: "parallel",
-        docs: ["Drug product manufacturing batch records", "Process development reports", "Container closure validation"],
-        artifacts: ["Drug product specifications", "Stability summaries"],
-        data: ["Release testing data", "Stability time-points"],
+        docs: [
+          { label: "Drug product manufacturing batch records", file: null },
+          { label: "Process development reports",             file: null },
+          { label: "Container closure validation",            file: null },
+        ],
+        artifacts: [
+          { label: "Drug product specifications", file: null },
+          { label: "Stability summaries",         file: null },
+        ],
+        data: [
+          { label: "Release testing data",   file: null },
+          { label: "Stability time-points",  file: null },
+        ],
       },
     ],
     sequential: [
@@ -101,17 +207,36 @@ const PHASES = [
         id: "p1-imp",
         label: "IMP & IMPD Preparation",
         type: "sequential",
-        docs: ["Investigational Medicinal Product Dossier (IMPD)", "IND amendments", "Updated IB (v2+)"],
-        artifacts: ["Integrated PK/PD report", "First-in-human safety summary"],
-        data: ["Pooled safety database (AESI, SAE)", "PK modeling outputs"],
+        docs: [
+          { label: "Investigational Medicinal Product Dossier (IMPD)", file: null },
+          { label: "IND amendments",                                    file: null },
+          { label: "Updated IB (v2+)",                                  file: null },
+        ],
+        artifacts: [
+          { label: "Integrated PK/PD report",        file: null },
+          { label: "First-in-human safety summary",  file: null },
+        ],
+        data: [
+          { label: "Pooled safety database (AESI, SAE)", file: null },
+          { label: "PK modeling outputs",               file: null },
+        ],
       },
       {
         id: "p1-eop1",
         label: "End-of-Phase 1 Meeting",
         type: "sequential",
-        docs: ["FDA Type B meeting request", "Briefing document", "Phase 2 protocol synopsis"],
-        artifacts: ["Meeting minutes", "Agreed dose range for Phase 2"],
-        data: ["Exposure-response analyses"],
+        docs: [
+          { label: "FDA Type B meeting request",  file: null },
+          { label: "Briefing document",           file: null },
+          { label: "Phase 2 protocol synopsis",   file: null },
+        ],
+        artifacts: [
+          { label: "Meeting minutes",                 file: null },
+          { label: "Agreed dose range for Phase 2",   file: null },
+        ],
+        data: [
+          { label: "Exposure-response analyses", file: null },
+        ],
       },
     ],
   },
@@ -128,33 +253,82 @@ const PHASES = [
         id: "p2a",
         label: "Phase 2a – Proof of Concept",
         type: "parallel",
-        docs: ["Phase 2a protocol", "ICF", "eCRF design", "SAP v1", "CSR (Phase 2a)"],
-        artifacts: ["PoC decision package", "Biomarker validation report"],
-        data: ["SDTM (DM, AE, LB, VS, EX)", "ADaM (ADSL, ADEFF, ADLB)", "TFLs"],
+        docs: [
+          { label: "Phase 2a protocol",   file: null },
+          { label: "ICF",                 file: null },
+          { label: "eCRF design",         file: null },
+          { label: "SAP v1",              file: null },
+          { label: "CSR (Phase 2a)",      file: null },
+        ],
+        artifacts: [
+          { label: "PoC decision package",       file: null },
+          { label: "Biomarker validation report", file: null },
+        ],
+        data: [
+          { label: "SDTM (DM, AE, LB, VS, EX)",     file: null },
+          { label: "ADaM (ADSL, ADEFF, ADLB)",       file: null },
+          { label: "TFLs",                           file: null },
+        ],
       },
       {
         id: "p2b",
         label: "Phase 2b – Dose Ranging",
         type: "parallel",
-        docs: ["Phase 2b protocol", "ICF", "eCRF", "SAP v2", "CSR (Phase 2b)"],
-        artifacts: ["Dose-response model", "Optimal dose selection report"],
-        data: ["SDTM domains", "ADaM datasets", "KM plots", "Forest plots"],
+        docs: [
+          { label: "Phase 2b protocol",   file: null },
+          { label: "ICF",                 file: null },
+          { label: "eCRF",                file: null },
+          { label: "SAP v2",              file: null },
+          { label: "CSR (Phase 2b)",      file: null },
+        ],
+        artifacts: [
+          { label: "Dose-response model",             file: null },
+          { label: "Optimal dose selection report",   file: null },
+        ],
+        data: [
+          { label: "SDTM domains",    file: null },
+          { label: "ADaM datasets",   file: null },
+          { label: "KM plots",        file: null },
+          { label: "Forest plots",    file: null },
+        ],
       },
       {
         id: "p2-pop",
         label: "Population PK/PD Modeling",
         type: "parallel",
-        docs: ["PopPK analysis plan", "PopPK report", "Exposure-response analysis report"],
-        artifacts: ["PopPK model (NONMEM/Monolix)", "E-R analysis outputs"],
-        data: ["Pooled PK dataset", "PD biomarker data", "Covariate dataset"],
+        docs: [
+          { label: "PopPK analysis plan",                  file: null },
+          { label: "PopPK report",                         file: null },
+          { label: "Exposure-response analysis report",    file: null },
+        ],
+        artifacts: [
+          { label: "PopPK model (NONMEM/Monolix)", file: null },
+          { label: "E-R analysis outputs",         file: null },
+        ],
+        data: [
+          { label: "Pooled PK dataset",    file: null },
+          { label: "PD biomarker data",    file: null },
+          { label: "Covariate dataset",    file: null },
+        ],
       },
       {
         id: "p2-rmp",
         label: "Risk Management & Regulatory",
         type: "parallel",
-        docs: ["IND annual report", "Safety update reports", "Risk Management Plan (RMP) draft", "Pediatric investigation plan (PIP)"],
-        artifacts: ["DSMB/DMC charters", "Risk-benefit framework"],
-        data: ["Integrated safety dataset", "Benefit-risk modeling"],
+        docs: [
+          { label: "IND annual report",                    file: null },
+          { label: "Safety update reports",                file: null },
+          { label: "Risk Management Plan (RMP) draft",     file: null },
+          { label: "Pediatric investigation plan (PIP)",   file: null },
+        ],
+        artifacts: [
+          { label: "DSMB/DMC charters",      file: null },
+          { label: "Risk-benefit framework", file: null },
+        ],
+        data: [
+          { label: "Integrated safety dataset", file: null },
+          { label: "Benefit-risk modeling",     file: null },
+        ],
       },
     ],
     sequential: [
@@ -162,9 +336,20 @@ const PHASES = [
         id: "p2-eop2",
         label: "End-of-Phase 2 Meeting",
         type: "sequential",
-        docs: ["Type B EOP2 meeting package", "Phase 3 protocol synopsis", "Agreed endpoints/estimands", "SPA request"],
-        artifacts: ["SPA agreement letter", "Agreed SAP framework", "FDA meeting minutes"],
-        data: ["Benefit-risk integrated summary"],
+        docs: [
+          { label: "Type B EOP2 meeting package",      file: null },
+          { label: "Phase 3 protocol synopsis",        file: null },
+          { label: "Agreed endpoints/estimands",       file: null },
+          { label: "SPA request",                      file: null },
+        ],
+        artifacts: [
+          { label: "SPA agreement letter",     file: null },
+          { label: "Agreed SAP framework",     file: null },
+          { label: "FDA meeting minutes",      file: null },
+        ],
+        data: [
+          { label: "Benefit-risk integrated summary", file: null },
+        ],
       },
     ],
   },
@@ -181,33 +366,83 @@ const PHASES = [
         id: "p3-piv",
         label: "Pivotal Trials (≥2)",
         type: "parallel",
-        docs: ["Phase 3 protocol (ICH E6 GCP)", "Master ICF", "eCRF", "SAP (final)", "CSR per trial"],
-        artifacts: ["Primary/secondary endpoint tables", "KM curves", "Forest plots", "Responder analyses"],
-        data: ["SDTM (all domains)", "ADaM (ADSL, ADAE, ADTTE, ADLB, ADEFF, ADCM)", "TFLs", "ADRG"],
+        docs: [
+          { label: "Phase 3 protocol (ICH E6 GCP)", file: null },
+          { label: "Master ICF",                    file: null },
+          { label: "eCRF",                          file: null },
+          { label: "SAP (final)",                   file: null },
+          { label: "CSR per trial",                 file: null },
+        ],
+        artifacts: [
+          { label: "Primary/secondary endpoint tables", file: null },
+          { label: "KM curves",                        file: null },
+          { label: "Forest plots",                     file: null },
+          { label: "Responder analyses",               file: null },
+        ],
+        data: [
+          { label: "SDTM (all domains)",                           file: null },
+          { label: "ADaM (ADSL, ADAE, ADTTE, ADLB, ADEFF, ADCM)", file: null },
+          { label: "TFLs",                                         file: null },
+          { label: "ADRG",                                         file: null },
+        ],
       },
       {
         id: "p3-sub",
         label: "Supportive & Subgroup Studies",
         type: "parallel",
-        docs: ["Long-term safety protocol", "Special population protocols (renal/hepatic)", "QTc study"],
-        artifacts: ["Integrated safety summary (ISS)", "Integrated efficacy summary (IES)"],
-        data: ["Pooled SDTM/ADaM", "Meta-analytic datasets"],
+        docs: [
+          { label: "Long-term safety protocol",                    file: null },
+          { label: "Special population protocols (renal/hepatic)", file: null },
+          { label: "QTc study",                                    file: null },
+        ],
+        artifacts: [
+          { label: "Integrated safety summary (ISS)",   file: null },
+          { label: "Integrated efficacy summary (IES)", file: null },
+        ],
+        data: [
+          { label: "Pooled SDTM/ADaM",      file: null },
+          { label: "Meta-analytic datasets", file: null },
+        ],
       },
       {
         id: "p3-cmc",
         label: "Commercial CMC Package",
         type: "parallel",
-        docs: ["Drug substance/product CTD sections (P+S)", "Process validation reports", "Comparability protocols", "Shelf life determination"],
-        artifacts: ["Commercial specifications", "Quality system documentation"],
-        data: ["Stability data (accelerated + long-term)", "Process analytical technology (PAT) data"],
+        docs: [
+          { label: "Drug substance/product CTD sections (P+S)", file: null },
+          { label: "Process validation reports",                file: null },
+          { label: "Comparability protocols",                   file: null },
+          { label: "Shelf life determination",                  file: null },
+        ],
+        artifacts: [
+          { label: "Commercial specifications",      file: null },
+          { label: "Quality system documentation",   file: null },
+        ],
+        data: [
+          { label: "Stability data (accelerated + long-term)",  file: null },
+          { label: "Process analytical technology (PAT) data", file: null },
+        ],
       },
       {
         id: "p3-reg",
         label: "Regulatory Submissions",
         type: "parallel",
-        docs: ["NDA/BLA (eCTD format)", "MAA (EMA)", "PMDA submission (Japan)", "Health Canada filing"],
-        artifacts: ["eCTD spine", "Module 2 summaries (QOS, NCS, CS)", "Risk management plan (final)"],
-        data: ["Define.xml", "Reviewer's Guide", "ADRG"],
+        docs: [
+          { label: "NDA/BLA (eCTD format)",       file: null },
+          { label: "MAA (EMA)",                   file: null },
+          { label: "PMDA submission (Japan)",     file: null },
+          { label: "Health Canada filing",        file: null },
+        ],
+        artifacts: [
+          { label: "eCTD spine",                          file: null },
+          { label: "Module 2 summaries (QOS, NCS, CS)",   file: null },
+          { label: "Risk management plan (final)",        file: null },
+        ],
+        data: [
+          { label: "Define.xml",      file: null },
+          { label: "Reviewer's Guide", file: null },
+          { label: "ADRG",            file: null },
+        ],
       },
     ],
     sequential: [
@@ -215,17 +450,40 @@ const PHASES = [
         id: "p3-rev",
         label: "Regulatory Review & Advisory",
         type: "sequential",
-        docs: ["Complete Response to information requests", "Advisory Committee briefing document", "Labeling negotiations (PI/SmPC)", "REMS proposal"],
-        artifacts: ["Final product label (draft)", "Advisory committee slides", "Risk communication materials"],
-        data: ["Integrated benefit-risk dataset", "Real-world external control data"],
+        docs: [
+          { label: "Complete Response to information requests",    file: null },
+          { label: "Advisory Committee briefing document",         file: null },
+          { label: "Labeling negotiations (PI/SmPC)",              file: null },
+          { label: "REMS proposal",                               file: null },
+        ],
+        artifacts: [
+          { label: "Final product label (draft)",     file: null },
+          { label: "Advisory committee slides",       file: null },
+          { label: "Risk communication materials",    file: null },
+        ],
+        data: [
+          { label: "Integrated benefit-risk dataset",     file: null },
+          { label: "Real-world external control data",    file: null },
+        ],
       },
       {
         id: "p3-approval",
         label: "Approval & Launch Readiness",
         type: "sequential",
-        docs: ["Approval letter", "Final USPI/SmPC", "Post-marketing commitment schedule", "Risk Evaluation and Mitigation Strategy (REMS)"],
-        artifacts: ["Final eCTD submission archive", "Approved labeling package"],
-        data: ["Approved indication dataset", "Launch safety database"],
+        docs: [
+          { label: "Approval letter",                                   file: null },
+          { label: "Final USPI/SmPC",                                   file: null },
+          { label: "Post-marketing commitment schedule",                file: null },
+          { label: "Risk Evaluation and Mitigation Strategy (REMS)",   file: null },
+        ],
+        artifacts: [
+          { label: "Final eCTD submission archive", file: null },
+          { label: "Approved labeling package",     file: null },
+        ],
+        data: [
+          { label: "Approved indication dataset", file: null },
+          { label: "Launch safety database",      file: null },
+        ],
       },
     ],
   },
@@ -242,33 +500,85 @@ const PHASES = [
         id: "pl-rwe",
         label: "Real World Evidence (RWE)",
         type: "parallel",
-        docs: ["RWE study protocol", "Data use agreement", "IRB/ethics approval", "RWD analysis plan"],
-        artifacts: ["RWE study reports", "Comparative effectiveness analyses", "Patient registry outputs"],
-        data: ["EHR data", "Claims data", "Patient registries", "Wearable/sensor data", "Natural language processed notes"],
+        docs: [
+          { label: "RWE study protocol",    file: null },
+          { label: "Data use agreement",    file: null },
+          { label: "IRB/ethics approval",   file: null },
+          { label: "RWD analysis plan",     file: null },
+        ],
+        artifacts: [
+          { label: "RWE study reports",                    file: null },
+          { label: "Comparative effectiveness analyses",   file: null },
+          { label: "Patient registry outputs",             file: null },
+        ],
+        data: [
+          { label: "EHR data",                         file: null },
+          { label: "Claims data",                      file: null },
+          { label: "Patient registries",               file: null },
+          { label: "Wearable/sensor data",             file: null },
+          { label: "Natural language processed notes", file: null },
+        ],
       },
       {
         id: "pl-pms",
         label: "Post-Marketing Safety (PMS)",
         type: "parallel",
-        docs: ["PSUR/PBRER", "PADER", "ICSRs (MedWatch/EudraVigilance)", "Risk management plan updates", "REMS assessment reports"],
-        artifacts: ["Signal detection reports", "Disproportionality analyses", "DILI/AESI surveillance outputs"],
-        data: ["Spontaneous adverse event reports", "FAERS/EudraVigilance data", "Literature surveillance"],
+        docs: [
+          { label: "PSUR/PBRER",                          file: null },
+          { label: "PADER",                               file: null },
+          { label: "ICSRs (MedWatch/EudraVigilance)",     file: null },
+          { label: "Risk management plan updates",        file: null },
+          { label: "REMS assessment reports",             file: null },
+        ],
+        artifacts: [
+          { label: "Signal detection reports",        file: null },
+          { label: "Disproportionality analyses",     file: null },
+          { label: "DILI/AESI surveillance outputs",  file: null },
+        ],
+        data: [
+          { label: "Spontaneous adverse event reports",   file: null },
+          { label: "FAERS/EudraVigilance data",           file: null },
+          { label: "Literature surveillance",             file: null },
+        ],
       },
       {
         id: "pl-pmc",
         label: "Post-Marketing Commitments",
         type: "parallel",
-        docs: ["PMC/PMR study protocols", "Pediatric study reports", "Long-term registry protocols"],
-        artifacts: ["Annual PMC progress reports", "Completed study CSRs"],
-        data: ["Pediatric SDTM/ADaM", "Special population datasets"],
+        docs: [
+          { label: "PMC/PMR study protocols",         file: null },
+          { label: "Pediatric study reports",         file: null },
+          { label: "Long-term registry protocols",    file: null },
+        ],
+        artifacts: [
+          { label: "Annual PMC progress reports",  file: null },
+          { label: "Completed study CSRs",         file: null },
+        ],
+        data: [
+          { label: "Pediatric SDTM/ADaM",          file: null },
+          { label: "Special population datasets",  file: null },
+        ],
       },
       {
         id: "pl-heor",
         label: "HEOR & Market Access",
         type: "parallel",
-        docs: ["HTA dossier (NICE, HAS, G-BA)", "Cost-effectiveness models", "Budget impact analysis", "Value dossier"],
-        artifacts: ["Payer evidence packages", "Systematic literature review", "Network meta-analysis report"],
-        data: ["QoL/PRO data (EQ-5D, SF-36)", "Resource utilization data", "Indirect comparison datasets"],
+        docs: [
+          { label: "HTA dossier (NICE, HAS, G-BA)",   file: null },
+          { label: "Cost-effectiveness models",        file: null },
+          { label: "Budget impact analysis",           file: null },
+          { label: "Value dossier",                    file: null },
+        ],
+        artifacts: [
+          { label: "Payer evidence packages",          file: null },
+          { label: "Systematic literature review",     file: null },
+          { label: "Network meta-analysis report",     file: null },
+        ],
+        data: [
+          { label: "QoL/PRO data (EQ-5D, SF-36)",      file: null },
+          { label: "Resource utilization data",        file: null },
+          { label: "Indirect comparison datasets",     file: null },
+        ],
       },
     ],
     sequential: [
@@ -276,9 +586,23 @@ const PHASES = [
         id: "pl-label",
         label: "Labeling Changes & Lifecycle",
         type: "sequential",
-        docs: ["sNDA/sBLA or Type II variation", "New indication protocol & CSR", "Label revision request", "CCDS updates"],
-        artifacts: ["Updated USPI/SmPC", "Dear Healthcare Provider letters", "Updated patient labeling", "New eCTD sequence"],
-        data: ["Post-approval safety signal data", "New indication clinical datasets", "Updated benefit-risk assessment"],
+        docs: [
+          { label: "sNDA/sBLA or Type II variation",   file: null },
+          { label: "New indication protocol & CSR",    file: null },
+          { label: "Label revision request",           file: null },
+          { label: "CCDS updates",                     file: null },
+        ],
+        artifacts: [
+          { label: "Updated USPI/SmPC",                  file: null },
+          { label: "Dear Healthcare Provider letters",   file: null },
+          { label: "Updated patient labeling",           file: null },
+          { label: "New eCTD sequence",                  file: null },
+        ],
+        data: [
+          { label: "Post-approval safety signal data",       file: null },
+          { label: "New indication clinical datasets",       file: null },
+          { label: "Updated benefit-risk assessment",        file: null },
+        ],
       },
     ],
   },
@@ -626,7 +950,21 @@ export default function ClinicalWorkflow() {
                           lineHeight: 1.5,
                         }}>
                           <span style={{ color: style.border, marginRight: 6 }}>▸</span>
-                          {item}
+                          {item.file ? (
+                            <a
+                              href={item.file}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                color: style.text,
+                                textDecoration: "underline",
+                                textDecorationStyle: "dotted",
+                                textUnderlineOffset: "3px",
+                              }}
+                            >
+                              {item.label}
+                            </a>
+                          ) : item.label}
                         </div>
                       ))}
                     </div>
