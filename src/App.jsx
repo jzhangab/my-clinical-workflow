@@ -152,6 +152,7 @@ const P3_APP   = "PHASE 3/Approval & Launch Readiness";
 
 const PL_RWE   = "POST-LAUNCH/Real World Evidence (RWE)";
 const PL_PMS   = "POST-LAUNCH/Post-Marketing Safety (PMS)";
+const PL_PMC   = "POST-LAUNCH/Post-Marketing Commitments";
 const PL_HEOR  = "POST-LAUNCH/HEOR & Market Access";
 
 const PHASES = [
@@ -690,9 +691,9 @@ const PHASES = [
         label: "Post-Marketing Commitments",
         type: "parallel",
         docs: [
-          { label: "PMC/PMR study protocols",         file: null },
-          { label: "Pediatric study reports",         file: null },
-          { label: "Long-term registry protocols",    file: null },
+          { label: "PMC/PMR study protocols",         file: f(PL_PMC, "CERV-PMC-001_PMC_PMR_Study_Protocol.docx") },
+          { label: "Pediatric study reports",         file: f(PL_PMC, "CERV-PED-001_Pediatric_Study_Report_PREA.docx") },
+          { label: "Long-term registry protocols",    file: f(PL_PMC, "CERV-REG_Long_Term_Registry_Protocol.docx") },
         ],
         artifacts: [
           { label: "Annual PMC progress reports",  file: null },
