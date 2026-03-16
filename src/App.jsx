@@ -170,17 +170,17 @@ const PHASES = [
         label: "Discovery & Target ID",
         type: "parallel",
         docs: [
-          { label: "Target validation report",    file: f(PC_DISC, "01_Target_Validation_Report_Cervimab.docx") },
-          { label: "HTS screening data",           file: f(PC_DISC, "02_HTS_Screening_Data_Cervimab.docx") },
-          { label: "Lead compound library",        file: f(PC_DISC, "03_Lead_Compound_Library_Cervimab.docx") },
+          { label: "Target validation report",    file: f(PC_DISC, "01_Target_Validation_Report_Cervimab.md") },
+          { label: "HTS screening data",           file: f(PC_DISC, "02_HTS_Screening_Data_Cervimab.md") },
+          { label: "Lead compound library",        file: f(PC_DISC, "03_Lead_Compound_Library_Cervimab.md") },
         ],
         artifacts: [
-          { label: "Compound activity data",                      file: f(PC_DISC, "04_Compound_Activity_Data_Cervimab.docx") },
-          { label: "Structure-activity relationship (SAR) models", file: f(PC_DISC, "05_SAR_Model_Report_Cervimab.docx") },
+          { label: "Compound activity data",                      file: f(PC_DISC, "04_Compound_Activity_Data_Cervimab.md") },
+          { label: "Structure-activity relationship (SAR) models", file: f(PC_DISC, "05_SAR_Model_Report_Cervimab.md") },
         ],
         data: [
-          { label: "Genomic/proteomic datasets", file: f(PC_DISC, "06_Genomic_Proteomic_Dataset_Cervimab.docx") },
-          { label: "In vitro assay results",      file: f(PC_DISC, "07_In_Vitro_Assay_Results_Cervimab.docx") },
+          { label: "Genomic/proteomic datasets", file: f(PC_DISC, "06_Genomic_Proteomic_Dataset_Cervimab.md") },
+          { label: "In vitro assay results",      file: f(PC_DISC, "07_In_Vitro_Assay_Results_Cervimab.md") },
         ],
       },
       {
@@ -188,19 +188,19 @@ const PHASES = [
         label: "In Vitro & In Vivo Toxicology",
         type: "parallel",
         docs: [
-          { label: "GLP toxicology study reports (single-dose)",  file: f(PC_TOX, "08_GLP_SingleDose_Tox_Cervimab.docx") },
-          { label: "GLP toxicology study reports (repeat-dose)",  file: f(PC_TOX, "09_GLP_RepeatDose_13wk_Tox_Cervimab.docx") },
-          { label: "NOAEL/LOAEL determinations",                  file: f(PC_TOX, "10_NOAEL_LOAEL_Determination_Cervimab.docx") },
-          { label: "Genotox battery results",                     file: f(PC_TOX, "11_Genotoxicity_Battery_Results_Cervimab.docx") },
+          { label: "GLP toxicology study reports (single-dose)",  file: f(PC_TOX, "08_GLP_SingleDose_Tox_Cervimab.md") },
+          { label: "GLP toxicology study reports (repeat-dose)",  file: f(PC_TOX, "09_GLP_RepeatDose_13wk_Tox_Cervimab.md") },
+          { label: "NOAEL/LOAEL determinations",                  file: f(PC_TOX, "10_NOAEL_LOAEL_Determination_Cervimab.md") },
+          { label: "Genotox battery results",                     file: f(PC_TOX, "11_Genotoxicity_Battery_Results_Cervimab.md") },
         ],
         artifacts: [
-          { label: "Tox summary tables",   file: f(PC_TOX, "12_Tox_Summary_Tables_Cervimab.docx") },
-          { label: "Dose-response curves", file: f(PC_TOX, "13_Dose_Response_Curves_Cervimab.docx") },
+          { label: "Tox summary tables",   file: f(PC_TOX, "12_Tox_Summary_Tables_Cervimab.md") },
+          { label: "Dose-response curves", file: f(PC_TOX, "13_Dose_Response_Curves_Cervimab.md") },
         ],
         data: [
-          { label: "ADME data",            file: f(PC_TOX, "14_ADME_Data_Cervimab.docx") },
-          { label: "Metabolite profiling", file: f(PC_TOX, "15_Metabolite_Profiling_ProteinBinding_Cervimab.docx") },
-          { label: "Protein binding data", file: f(PC_TOX, "15_Metabolite_Profiling_ProteinBinding_Cervimab.docx") },
+          { label: "ADME data",            file: f(PC_TOX, "14_ADME_Data_Cervimab.md") },
+          { label: "Metabolite profiling", file: f(PC_TOX, "15_Metabolite_Profiling_ProteinBinding_Cervimab.md") },
+          { label: "Protein binding data", file: f(PC_TOX, "15_Metabolite_Profiling_ProteinBinding_Cervimab.md") },
         ],
       },
       {
@@ -208,17 +208,17 @@ const PHASES = [
         label: "Pharmacology & PK/PD",
         type: "parallel",
         docs: [
-          { label: "Pharmacology study reports", file: f(PC_PHARM, "16_Primary_Pharmacology_Study_Cervimab.docx") },
-          { label: "PK/PD models",               file: f(PC_PHARM, "17_PKPD_Model_Report_Cervimab.docx") },
-          { label: "Bioavailability summaries",  file: f(PC_PHARM, "18_Bioavailability_Summary_Cervimab.docx") },
+          { label: "Pharmacology study reports", file: f(PC_PHARM, "16_Primary_Pharmacology_Study_Cervimab.md") },
+          { label: "PK/PD models",               file: f(PC_PHARM, "17_PKPD_Model_Report_Cervimab.md") },
+          { label: "Bioavailability summaries",  file: f(PC_PHARM, "18_Bioavailability_Summary_Cervimab.md") },
         ],
         artifacts: [
-          { label: "PK parameter tables", file: f(PC_PHARM, "19_PK_Parameter_Tables_Cervimab.docx") },
-          { label: "PD biomarker data",   file: f(PC_PHARM, "20_Biomarker_Data_Cervimab.docx") },
+          { label: "PK parameter tables", file: f(PC_PHARM, "19_PK_Parameter_Tables_Cervimab.md") },
+          { label: "PD biomarker data",   file: f(PC_PHARM, "20_Biomarker_Data_Cervimab.md") },
         ],
         data: [
-          { label: "Plasma concentration-time data", file: f(PC_PHARM, "21_Plasma_Concentration_Time_Data_Cervimab.docx") },
-          { label: "Receptor occupancy data",        file: f(PC_PHARM, "22_Receptor_Occupancy_Data_Cervimab.docx") },
+          { label: "Plasma concentration-time data", file: f(PC_PHARM, "21_Plasma_Concentration_Time_Data_Cervimab.md") },
+          { label: "Receptor occupancy data",        file: f(PC_PHARM, "22_Receptor_Occupancy_Data_Cervimab.md") },
         ],
       },
       {
@@ -226,9 +226,9 @@ const PHASES = [
         label: "Analytical Chemistry & Formulation",
         type: "parallel",
         docs: [
-          { label: "Drug substance characterization",   file: f(PC_CHEM, "cervimab_DS_characterization_3.2.S.3.docx") },
-          { label: "Formulation development reports",   file: f(PC_CHEM, "cervimab_formulation_development_3.2.P.2.docx") },
-          { label: "Stability studies",                 file: f(PC_CHEM, "cervimab_stability_studies_3.2.S.7_P.8.docx") },
+          { label: "Drug substance characterization",   file: f(PC_CHEM, "cervimab_DS_characterization_3.2.S.3.md") },
+          { label: "Formulation development reports",   file: f(PC_CHEM, "cervimab_formulation_development_3.2.P.2.md") },
+          { label: "Stability studies",                 file: f(PC_CHEM, "cervimab_stability_studies_3.2.S.7_P.8.md") },
         ],
         artifacts: [
           { label: "Analytical methods",  file: null },
@@ -246,7 +246,7 @@ const PHASES = [
         label: "IND-Enabling Package",
         type: "sequential",
         docs: [
-          { label: "IND Application (21 CFR 312)",        file: f(PC_IND, "CERVIMAB_IND_Package.docx") },
+          { label: "IND Application (21 CFR 312)",        file: f(PC_IND, "CERVIMAB_IND_Package.md") },
           { label: "Investigator's Brochure (IB) v1",     file: null },
           { label: "CMC section",                         file: null },
           { label: "Pharmacology/Tox section",            file: null },
@@ -277,9 +277,9 @@ const PHASES = [
         label: "SAD/MAD Studies",
         type: "parallel",
         docs: [
-          { label: "SAD/MAD protocol",                       file: f(P1_SAD, "CERV001_SAD_MAD_Protocol_v1.0.docx") },
-          { label: "Dose escalation plan",                   file: f(P1_SAD, "CERV001_Dose_Escalation_Plan_v1.0.docx") },
-          { label: "Safety monitoring committee charter",    file: f(P1_SAD, "CERV001_DSMB_Charter_v1.0.docx") },
+          { label: "SAD/MAD protocol",                       file: f(P1_SAD, "CERV001_SAD_MAD_Protocol_v1.0.md") },
+          { label: "Dose escalation plan",                   file: f(P1_SAD, "CERV001_Dose_Escalation_Plan_v1.0.md") },
+          { label: "Safety monitoring committee charter",    file: f(P1_SAD, "CERV001_DSMB_Charter_v1.0.md") },
         ],
         artifacts: [
           { label: "Dose-exposure-response tables", file: null },
@@ -298,9 +298,9 @@ const PHASES = [
         label: "Food Effect / DDI Studies",
         type: "parallel",
         docs: [
-          { label: "Food effect protocol",              file: f(P1_FOOD, "CRV-PK-001_FoodEffect_Protocol_v1.0.docx") },
-          { label: "DDI study protocol",                file: f(P1_FOOD, "CRV-DDI-002_DDI_Protocol_v1.0.docx") },
-          { label: "CYP inhibition/induction report",  file: f(P1_FOOD, "VT-DMPK-004_CYP_Inhibition_Induction_Report.docx") },
+          { label: "Food effect protocol",              file: f(P1_FOOD, "CRV-PK-001_FoodEffect_Protocol_v1.0.md") },
+          { label: "DDI study protocol",                file: f(P1_FOOD, "CRV-DDI-002_DDI_Protocol_v1.0.md") },
+          { label: "CYP inhibition/induction report",  file: f(P1_FOOD, "VT-DMPK-004_CYP_Inhibition_Induction_Report.md") },
         ],
         artifacts: [
           { label: "Bioequivalence summaries", file: null },
@@ -316,8 +316,8 @@ const PHASES = [
         label: "Bioanalytical Methods",
         type: "parallel",
         docs: [
-          { label: "Bioanalytical method validation report (BMV)", file: f(P1_BIOA, "CRV001_Bioanalytical_Method_Validation_Report.docx") },
-          { label: "Incurred sample reanalysis (ISR) report",      file: f(P1_BIOA, "CRV001_Incurred_Sample_Reanalysis_Report.docx") },
+          { label: "Bioanalytical method validation report (BMV)", file: f(P1_BIOA, "CRV001_Bioanalytical_Method_Validation_Report.md") },
+          { label: "Incurred sample reanalysis (ISR) report",      file: f(P1_BIOA, "CRV001_Incurred_Sample_Reanalysis_Report.md") },
         ],
         artifacts: [
           { label: "Validated assay SOPs",    file: null },
@@ -333,9 +333,9 @@ const PHASES = [
         label: "CMC Development",
         type: "parallel",
         docs: [
-          { label: "Drug product manufacturing batch records", file: f(P1_CMC, "CVM_CMC_BR001_BatchManufacturingRecord.docx") },
-          { label: "Process development reports",             file: f(P1_CMC, "CVM_CMC_PDR001_ProcessDevelopmentReport.docx") },
-          { label: "Container closure validation",            file: f(P1_CMC, "CVM_CMC_CCI001_ContainerClosureIntegrityValidation.docx") },
+          { label: "Drug product manufacturing batch records", file: f(P1_CMC, "CVM_CMC_BR001_BatchManufacturingRecord.md") },
+          { label: "Process development reports",             file: f(P1_CMC, "CVM_CMC_PDR001_ProcessDevelopmentReport.md") },
+          { label: "Container closure validation",            file: f(P1_CMC, "CVM_CMC_CCI001_ContainerClosureIntegrityValidation.md") },
         ],
         artifacts: [
           { label: "Drug product specifications", file: null },
@@ -353,9 +353,9 @@ const PHASES = [
         label: "IMP & IMPD Preparation",
         type: "sequential",
         docs: [
-          { label: "Investigational Medicinal Product Dossier (IMPD)", file: f(P1_IMP, "CERVIMAB_IMPD_v3.0.docx") },
-          { label: "IND amendments",                                    file: f(P1_IMP, "CERVIMAB_IND_Amendment_012.docx") },
-          { label: "Updated IB (v2+)",                                  file: f(P1_IMP, "CERVIMAB_Investigator_Brochure_v4.0.docx") },
+          { label: "Investigational Medicinal Product Dossier (IMPD)", file: f(P1_IMP, "CERVIMAB_IMPD_v3.0.md") },
+          { label: "IND amendments",                                    file: f(P1_IMP, "CERVIMAB_IND_Amendment_012.md") },
+          { label: "Updated IB (v2+)",                                  file: f(P1_IMP, "CERVIMAB_Investigator_Brochure_v4.0.md") },
         ],
         artifacts: [
           { label: "Integrated PK/PD report",        file: null },
@@ -371,9 +371,9 @@ const PHASES = [
         label: "End-of-Phase 1 Meeting",
         type: "sequential",
         docs: [
-          { label: "FDA Type B meeting request",  file: f(P1_EOP1, "CERVIMAB_EOP1_TypeB_Meeting_Request.docx") },
-          { label: "Briefing document",           file: f(P1_EOP1, "CERVIMAB_EOP1_Briefing_Document.docx") },
-          { label: "Phase 2 protocol synopsis",   file: f(P1_EOP1, "CERVIMAB_CRC002_Phase2_Protocol_Synopsis.docx") },
+          { label: "FDA Type B meeting request",  file: f(P1_EOP1, "CERVIMAB_EOP1_TypeB_Meeting_Request.md") },
+          { label: "Briefing document",           file: f(P1_EOP1, "CERVIMAB_EOP1_Briefing_Document.md") },
+          { label: "Phase 2 protocol synopsis",   file: f(P1_EOP1, "CERVIMAB_CRC002_Phase2_Protocol_Synopsis.md") },
         ],
         artifacts: [
           { label: "Meeting minutes",                 file: null },
@@ -399,11 +399,11 @@ const PHASES = [
         label: "Phase 2a – Proof of Concept",
         type: "parallel",
         docs: [
-          { label: "Phase 2a protocol",   file: f(P2A, "01_CVB-CRC-201_Protocol_v1.0.docx") },
-          { label: "ICF",                 file: f(P2A, "02_CVB-CRC-201_ICF_v1.0.docx") },
-          { label: "eCRF design",         file: f(P2A, "03_CVB-CRC-201_eCRF_Design_v1.0.docx") },
-          { label: "SAP v1",              file: f(P2A, "04_CVB-CRC-201_SAP_v1.0.docx") },
-          { label: "CSR (Phase 2a)",      file: f(P2A, "05_CVB-CRC-201_CSR_v1.0.docx") },
+          { label: "Phase 2a protocol",   file: f(P2A, "01_CVB-CRC-201_Protocol_v1.0.md") },
+          { label: "ICF",                 file: f(P2A, "02_CVB-CRC-201_ICF_v1.0.md") },
+          { label: "eCRF design",         file: f(P2A, "03_CVB-CRC-201_eCRF_Design_v1.0.md") },
+          { label: "SAP v1",              file: f(P2A, "04_CVB-CRC-201_SAP_v1.0.md") },
+          { label: "CSR (Phase 2a)",      file: f(P2A, "05_CVB-CRC-201_CSR_v1.0.md") },
         ],
         artifacts: [
           { label: "PoC decision package",       file: null },
@@ -420,7 +420,7 @@ const PHASES = [
         label: "Phase 2b – Dose Ranging",
         type: "parallel",
         docs: [
-          { label: "Phase 2b protocol",   file: f(P2B, "AXB-CRC-201_Cervimab_Phase2b_Protocol_v1.0.docx") },
+          { label: "Phase 2b protocol",   file: f(P2B, "AXB-CRC-201_Cervimab_Phase2b_Protocol_v1.0.md") },
           { label: "ICF",                 file: null },
           { label: "eCRF",                file: null },
           { label: "SAP v2",              file: null },
@@ -442,9 +442,9 @@ const PHASES = [
         label: "Population PK/PD Modeling",
         type: "parallel",
         docs: [
-          { label: "PopPK analysis plan",                  file: f(P2_POP, "cervimab_poppk_plan.docx") },
-          { label: "PopPK report",                         file: f(P2_POP, "cervimab_poppk_report.docx") },
-          { label: "Exposure-response analysis report",    file: f(P2_POP, "cervimab_er_report.docx") },
+          { label: "PopPK analysis plan",                  file: f(P2_POP, "cervimab_poppk_plan.md") },
+          { label: "PopPK report",                         file: f(P2_POP, "cervimab_poppk_report.md") },
+          { label: "Exposure-response analysis report",    file: f(P2_POP, "cervimab_er_report.md") },
         ],
         artifacts: [
           { label: "PopPK model (NONMEM/Monolix)", file: null },
@@ -461,10 +461,10 @@ const PHASES = [
         label: "Risk Management & Regulatory",
         type: "parallel",
         docs: [
-          { label: "IND annual report",                    file: f(P2_RMP, "CERVI-IND-Annual-Report-v1.0.docx") },
-          { label: "Safety update reports",                file: f(P2_RMP, "CERVI-Safety-Update-Report-v1.0.docx") },
-          { label: "Risk Management Plan (RMP) draft",     file: f(P2_RMP, "CERVI-Risk-Management-Plan-v2.0.docx") },
-          { label: "Pediatric investigation plan (PIP)",   file: f(P2_RMP, "CERVI-Pediatric-Investigation-Plan-v1.0.docx") },
+          { label: "IND annual report",                    file: f(P2_RMP, "CERVI-IND-Annual-Report-v1.0.md") },
+          { label: "Safety update reports",                file: f(P2_RMP, "CERVI-Safety-Update-Report-v1.0.md") },
+          { label: "Risk Management Plan (RMP) draft",     file: f(P2_RMP, "CERVI-Risk-Management-Plan-v2.0.md") },
+          { label: "Pediatric investigation plan (PIP)",   file: f(P2_RMP, "CERVI-Pediatric-Investigation-Plan-v1.0.md") },
         ],
         artifacts: [
           { label: "DSMB/DMC charters",      file: null },
@@ -482,10 +482,10 @@ const PHASES = [
         label: "End-of-Phase 2 Meeting",
         type: "sequential",
         docs: [
-          { label: "Type B EOP2 meeting package",      file: f(P2_EOP2, "CERVIMAB_EOP2_Meeting_Request.docx") },
-          { label: "Phase 3 protocol synopsis",        file: f(P2_EOP2, "CERVIMAB_Phase3_Protocol_Synopsis.docx") },
-          { label: "Agreed endpoints/estimands",       file: f(P2_EOP2, "CERVIMAB_Endpoints_Estimands.docx") },
-          { label: "SPA request",                      file: f(P2_EOP2, "CERVIMAB_SPA_Request.docx") },
+          { label: "Type B EOP2 meeting package",      file: f(P2_EOP2, "CERVIMAB_EOP2_Meeting_Request.md") },
+          { label: "Phase 3 protocol synopsis",        file: f(P2_EOP2, "CERVIMAB_Phase3_Protocol_Synopsis.md") },
+          { label: "Agreed endpoints/estimands",       file: f(P2_EOP2, "CERVIMAB_Endpoints_Estimands.md") },
+          { label: "SPA request",                      file: f(P2_EOP2, "CERVIMAB_SPA_Request.md") },
         ],
         artifacts: [
           { label: "SPA agreement letter",     file: null },
@@ -512,11 +512,11 @@ const PHASES = [
         label: "Pivotal Trials (≥2)",
         type: "parallel",
         docs: [
-          { label: "Phase 3 protocol (ICH E6 GCP)", file: f(P3_PIV, "CERVIMAB301_Protocol_v1.0.docx") },
-          { label: "Master ICF",                    file: f(P3_PIV, "CERVIMAB301_MasterICF_v1.0.docx") },
-          { label: "eCRF",                          file: f(P3_PIV, "CERVIMAB301_eCRF_v1.0.docx") },
-          { label: "SAP (final)",                   file: f(P3_PIV, "CERV301_SAP_v2.0.docx") },
-          { label: "CSR per trial",                 file: f(P3_PIV, "CERV301_CSR_Final.docx") },
+          { label: "Phase 3 protocol (ICH E6 GCP)", file: f(P3_PIV, "CERVIMAB301_Protocol_v1.0.md") },
+          { label: "Master ICF",                    file: f(P3_PIV, "CERVIMAB301_MasterICF_v1.0.md") },
+          { label: "eCRF",                          file: f(P3_PIV, "CERVIMAB301_eCRF_v1.0.md") },
+          { label: "SAP (final)",                   file: f(P3_PIV, "CERV301_SAP_v2.0.md") },
+          { label: "CSR per trial",                 file: f(P3_PIV, "CERV301_CSR_Final.md") },
         ],
         artifacts: [
           { label: "Primary/secondary endpoint tables", file: null },
@@ -536,9 +536,9 @@ const PHASES = [
         label: "Supportive & Subgroup Studies",
         type: "parallel",
         docs: [
-          { label: "Long-term safety protocol",                    file: f(P3_SUB, "CER-LTS-001_LongTerm_Safety_Protocol.docx") },
-          { label: "Special population protocols (renal/hepatic)", file: f(P3_SUB, "CER-SP-002_Special_Population_Renal_Hepatic_Protocol.docx") },
-          { label: "QTc study",                                    file: f(P3_SUB, "CER-QT-003_TQT_QTc_Study_Protocol.docx") },
+          { label: "Long-term safety protocol",                    file: f(P3_SUB, "CER-LTS-001_LongTerm_Safety_Protocol.md") },
+          { label: "Special population protocols (renal/hepatic)", file: f(P3_SUB, "CER-SP-002_Special_Population_Renal_Hepatic_Protocol.md") },
+          { label: "QTc study",                                    file: f(P3_SUB, "CER-QT-003_TQT_QTc_Study_Protocol.md") },
         ],
         artifacts: [
           { label: "Integrated safety summary (ISS)",   file: null },
@@ -554,10 +554,10 @@ const PHASES = [
         label: "Commercial CMC Package",
         type: "parallel",
         docs: [
-          { label: "Drug substance/product CTD sections (P+S)", file: f(P3_CMC, "CTD_Module3_Cervimab.docx") },
-          { label: "Process validation reports",                file: f(P3_CMC, "ProcessValidationReport_PVR001_Cervimab.docx") },
-          { label: "Comparability protocols",                   file: f(P3_CMC, "ComparabilityProtocol_CMP001_Cervimab.docx") },
-          { label: "Shelf life determination",                  file: f(P3_CMC, "ShelfLifeDetermination_SLD001_Cervimab.docx") },
+          { label: "Drug substance/product CTD sections (P+S)", file: f(P3_CMC, "CTD_Module3_Cervimab.md") },
+          { label: "Process validation reports",                file: f(P3_CMC, "ProcessValidationReport_PVR001_Cervimab.md") },
+          { label: "Comparability protocols",                   file: f(P3_CMC, "ComparabilityProtocol_CMP001_Cervimab.md") },
+          { label: "Shelf life determination",                  file: f(P3_CMC, "ShelfLifeDetermination_SLD001_Cervimab.md") },
         ],
         artifacts: [
           { label: "Commercial specifications",      file: null },
@@ -573,10 +573,10 @@ const PHASES = [
         label: "Regulatory Submissions",
         type: "parallel",
         docs: [
-          { label: "NDA/BLA (eCTD format)",       file: f(P3_REG, "CERVIMAB_BLA_761XXX_FDA_eCTD.docx") },
-          { label: "MAA (EMA)",                   file: f(P3_REG, "CERVIMAB_MAA_EMA.docx") },
-          { label: "PMDA submission (Japan)",     file: f(P3_REG, "CERVIMAB_JNDA_PMDA.docx") },
-          { label: "Health Canada filing",        file: f(P3_REG, "CERVIMAB_NDS_HealthCanada.docx") },
+          { label: "NDA/BLA (eCTD format)",       file: f(P3_REG, "CERVIMAB_BLA_761XXX_FDA_eCTD.md") },
+          { label: "MAA (EMA)",                   file: f(P3_REG, "CERVIMAB_MAA_EMA.md") },
+          { label: "PMDA submission (Japan)",     file: f(P3_REG, "CERVIMAB_JNDA_PMDA.md") },
+          { label: "Health Canada filing",        file: f(P3_REG, "CERVIMAB_NDS_HealthCanada.md") },
         ],
         artifacts: [
           { label: "eCTD spine",                          file: null },
@@ -596,10 +596,10 @@ const PHASES = [
         label: "Regulatory Review & Advisory",
         type: "sequential",
         docs: [
-          { label: "Complete Response to information requests",    file: f(P3_REG, "CERVIMAB_Doc1_Complete_Response_to_CRL.docx") },
-          { label: "Advisory Committee briefing document",         file: f(P3_REG, "CERVIMAB_Doc2_ODAC_Briefing_Document.docx") },
-          { label: "Labeling negotiations (PI/SmPC)",              file: f(P3_REG, "CERVIMAB_Doc3_Labeling_Negotiations_PI_SmPC.docx") },
-          { label: "REMS proposal",                               file: f(P3_REG, "CERVIMAB_Doc4_REMS_Proposal.docx") },
+          { label: "Complete Response to information requests",    file: f(P3_REG, "CERVIMAB_Doc1_Complete_Response_to_CRL.md") },
+          { label: "Advisory Committee briefing document",         file: f(P3_REG, "CERVIMAB_Doc2_ODAC_Briefing_Document.md") },
+          { label: "Labeling negotiations (PI/SmPC)",              file: f(P3_REG, "CERVIMAB_Doc3_Labeling_Negotiations_PI_SmPC.md") },
+          { label: "REMS proposal",                               file: f(P3_REG, "CERVIMAB_Doc4_REMS_Proposal.md") },
         ],
         artifacts: [
           { label: "Final product label (draft)",     file: null },
@@ -616,7 +616,7 @@ const PHASES = [
         label: "Approval & Launch Readiness",
         type: "sequential",
         docs: [
-          { label: "Approval letter",                                   file: f(P3_APP, "Approval Letter.docx") },
+          { label: "Approval letter",                                   file: f(P3_APP, "Approval Letter.md") },
           { label: "Final USPI/SmPC",                                   file: null },
           { label: "Post-marketing commitment schedule",                file: null },
           { label: "Risk Evaluation and Mitigation Strategy (REMS)",   file: null },
@@ -646,7 +646,7 @@ const PHASES = [
         label: "Real World Evidence (RWE)",
         type: "parallel",
         docs: [
-          { label: "RWE study protocol",    file: f(PL_RWE, "CERVIMAB_PostLaunch_RWD_RWE_Package.docx") },
+          { label: "RWE study protocol",    file: f(PL_RWE, "CERVIMAB_PostLaunch_RWD_RWE_Package.md") },
           { label: "Data use agreement",    file: null },
           { label: "IRB/ethics approval",   file: null },
           { label: "RWD analysis plan",     file: null },
@@ -669,7 +669,7 @@ const PHASES = [
         label: "Post-Marketing Safety (PMS)",
         type: "parallel",
         docs: [
-          { label: "PSUR/PBRER",                          file: f(PL_PMS, "PSURPBRER package.docx") },
+          { label: "PSUR/PBRER",                          file: f(PL_PMS, "PSURPBRER package.md") },
           { label: "PADER",                               file: null },
           { label: "ICSRs (MedWatch/EudraVigilance)",     file: null },
           { label: "Risk management plan updates",        file: null },
@@ -691,9 +691,9 @@ const PHASES = [
         label: "Post-Marketing Commitments",
         type: "parallel",
         docs: [
-          { label: "PMC/PMR study protocols",         file: f(PL_PMC, "CERV-PMC-001_PMC_PMR_Study_Protocol.docx") },
-          { label: "Pediatric study reports",         file: f(PL_PMC, "CERV-PED-001_Pediatric_Study_Report_PREA.docx") },
-          { label: "Long-term registry protocols",    file: f(PL_PMC, "CERV-REG_Long_Term_Registry_Protocol.docx") },
+          { label: "PMC/PMR study protocols",         file: f(PL_PMC, "CERV-PMC-001_PMC_PMR_Study_Protocol.md") },
+          { label: "Pediatric study reports",         file: f(PL_PMC, "CERV-PED-001_Pediatric_Study_Report_PREA.md") },
+          { label: "Long-term registry protocols",    file: f(PL_PMC, "CERV-REG_Long_Term_Registry_Protocol.md") },
         ],
         artifacts: [
           { label: "Annual PMC progress reports",  file: null },
@@ -709,10 +709,10 @@ const PHASES = [
         label: "HEOR & Market Access",
         type: "parallel",
         docs: [
-          { label: "HTA dossier (NICE, HAS, G-BA)",   file: f(PL_HEOR, "cervimab_hta_dossier.docx") },
-          { label: "Cost-effectiveness models",        file: f(PL_HEOR, "cervimab_cost_effectiveness.docx") },
-          { label: "Budget impact analysis",           file: f(PL_HEOR, "cervimab_budget_impact.docx") },
-          { label: "Value dossier",                    file: f(PL_HEOR, "cervimab_value_dossier.docx") },
+          { label: "HTA dossier (NICE, HAS, G-BA)",   file: f(PL_HEOR, "cervimab_hta_dossier.md") },
+          { label: "Cost-effectiveness models",        file: f(PL_HEOR, "cervimab_cost_effectiveness.md") },
+          { label: "Budget impact analysis",           file: f(PL_HEOR, "cervimab_budget_impact.md") },
+          { label: "Value dossier",                    file: f(PL_HEOR, "cervimab_value_dossier.md") },
         ],
         artifacts: [
           { label: "Payer evidence packages",          file: null },
