@@ -4,11 +4,18 @@ import { useState } from "react";
 const f = (folder, filename) =>
   `/data/${folder.replace(/ /g, "%20").replace(/&/g, "%26").replace(/:/g, "%3A")}/${filename}`;
 
-const PC_DISC = "PRECLINICAL/Discovery & Target ID";
-const PC_TOX  = "PRECLINICAL/In Vitro & Toxicology";
+const PC_DISC  = "PRECLINICAL/Discovery & Target ID";
+const PC_TOX   = "PRECLINICAL/In Vitro & Toxicology";
 const PC_PHARM = "PRECLINICAL/Pharmacology & PK:PD";
 const PC_CHEM  = "PRECLINICAL/Analytical Chemistry & Formulation";
 const PC_IND   = "PRECLINICAL/IND-Enabling Package";
+
+const P1_SAD   = "PHASE 1/SAD:MAD Studies";
+const P1_FOOD  = "PHASE 1/Food Effect : DDI Studies";
+const P1_BIOA  = "PHASE 1/Bioanalytical Methods";
+const P1_CMC   = "PHASE 1/CMC Development";
+const P1_IMP   = "PHASE 1/IMP & IMPD Preparation";
+const P1_EOP1  = "PHASE 1/End-of-Phase 1 Meeting";
 
 const PHASES = [
   {
@@ -132,9 +139,9 @@ const PHASES = [
         label: "SAD/MAD Studies",
         type: "parallel",
         docs: [
-          { label: "SAD/MAD protocol",                       file: null },
-          { label: "Dose escalation plan",                   file: null },
-          { label: "Safety monitoring committee charter",    file: null },
+          { label: "SAD/MAD protocol",                       file: f(P1_SAD, "CERV001_SAD_MAD_Protocol_v1.0.docx") },
+          { label: "Dose escalation plan",                   file: f(P1_SAD, "CERV001_Dose_Escalation_Plan_v1.0.docx") },
+          { label: "Safety monitoring committee charter",    file: f(P1_SAD, "CERV001_DSMB_Charter_v1.0.docx") },
         ],
         artifacts: [
           { label: "Dose-exposure-response tables", file: null },
@@ -153,9 +160,9 @@ const PHASES = [
         label: "Food Effect / DDI Studies",
         type: "parallel",
         docs: [
-          { label: "Food effect protocol",              file: null },
-          { label: "DDI study protocol",                file: null },
-          { label: "CYP inhibition/induction report",  file: null },
+          { label: "Food effect protocol",              file: f(P1_FOOD, "CRV-PK-001_FoodEffect_Protocol_v1.0.docx") },
+          { label: "DDI study protocol",                file: f(P1_FOOD, "CRV-DDI-002_DDI_Protocol_v1.0.docx") },
+          { label: "CYP inhibition/induction report",  file: f(P1_FOOD, "VT-DMPK-004_CYP_Inhibition_Induction_Report.docx") },
         ],
         artifacts: [
           { label: "Bioequivalence summaries", file: null },
@@ -171,8 +178,8 @@ const PHASES = [
         label: "Bioanalytical Methods",
         type: "parallel",
         docs: [
-          { label: "Bioanalytical method validation report (BMV)", file: null },
-          { label: "Incurred sample reanalysis (ISR) report",      file: null },
+          { label: "Bioanalytical method validation report (BMV)", file: f(P1_BIOA, "CRV001_Bioanalytical_Method_Validation_Report.docx") },
+          { label: "Incurred sample reanalysis (ISR) report",      file: f(P1_BIOA, "CRV001_Incurred_Sample_Reanalysis_Report.docx") },
         ],
         artifacts: [
           { label: "Validated assay SOPs",    file: null },
@@ -188,9 +195,9 @@ const PHASES = [
         label: "CMC Development",
         type: "parallel",
         docs: [
-          { label: "Drug product manufacturing batch records", file: null },
-          { label: "Process development reports",             file: null },
-          { label: "Container closure validation",            file: null },
+          { label: "Drug product manufacturing batch records", file: f(P1_CMC, "CVM_CMC_BR001_BatchManufacturingRecord.docx") },
+          { label: "Process development reports",             file: f(P1_CMC, "CVM_CMC_PDR001_ProcessDevelopmentReport.docx") },
+          { label: "Container closure validation",            file: f(P1_CMC, "CVM_CMC_CCI001_ContainerClosureIntegrityValidation.docx") },
         ],
         artifacts: [
           { label: "Drug product specifications", file: null },
@@ -208,9 +215,9 @@ const PHASES = [
         label: "IMP & IMPD Preparation",
         type: "sequential",
         docs: [
-          { label: "Investigational Medicinal Product Dossier (IMPD)", file: null },
-          { label: "IND amendments",                                    file: null },
-          { label: "Updated IB (v2+)",                                  file: null },
+          { label: "Investigational Medicinal Product Dossier (IMPD)", file: f(P1_IMP, "CERVIMAB_IMPD_v3.0.docx") },
+          { label: "IND amendments",                                    file: f(P1_IMP, "CERVIMAB_IND_Amendment_012.docx") },
+          { label: "Updated IB (v2+)",                                  file: f(P1_IMP, "CERVIMAB_Investigator_Brochure_v4.0.docx") },
         ],
         artifacts: [
           { label: "Integrated PK/PD report",        file: null },
@@ -226,9 +233,9 @@ const PHASES = [
         label: "End-of-Phase 1 Meeting",
         type: "sequential",
         docs: [
-          { label: "FDA Type B meeting request",  file: null },
-          { label: "Briefing document",           file: null },
-          { label: "Phase 2 protocol synopsis",   file: null },
+          { label: "FDA Type B meeting request",  file: f(P1_EOP1, "CERVIMAB_EOP1_TypeB_Meeting_Request.docx") },
+          { label: "Briefing document",           file: f(P1_EOP1, "CERVIMAB_EOP1_Briefing_Document.docx") },
+          { label: "Phase 2 protocol synopsis",   file: f(P1_EOP1, "CERVIMAB_CRC002_Phase2_Protocol_Synopsis.docx") },
         ],
         artifacts: [
           { label: "Meeting minutes",                 file: null },
