@@ -1005,14 +1005,14 @@ function ClinicalWorkflow() {
                                 {item.label}
                               </a>
                               <a
-                                href={item.file.replace(/\.md$/, ".docx")}
+                                href={item.file.replace(/\.md$/, ".pdf")}
                                 download
-                                title="Download Word document"
+                                title="Download PDF"
                                 style={{
                                   display: "inline-flex",
                                   alignItems: "center",
                                   justifyContent: "center",
-                                  background: "#2B579A",
+                                  background: "#B91C1C",
                                   color: "#fff",
                                   fontSize: 9,
                                   fontWeight: 700,
@@ -1024,7 +1024,7 @@ function ClinicalWorkflow() {
                                   lineHeight: 1.4,
                                 }}
                               >
-                                W↓
+                                PDF↓
                               </a>
                             </span>
                           ) : item.label}
